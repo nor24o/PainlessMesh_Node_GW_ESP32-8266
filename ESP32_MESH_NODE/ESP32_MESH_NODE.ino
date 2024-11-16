@@ -137,8 +137,8 @@ bool deserializeMessage(const String &data, Message &msg) {
 
 // Callback for received messages
 void receivedCallback(uint32_t from, String &data) {
-  Serial.print("RAW: ");
-  Serial.println(data);
+ //Serial.print("RAW: ");
+//Serial.println(data);
 
   if (deserializeMessage(data, msg)) {
     if (msg.initiatorId == mesh.getNodeId()) {
@@ -217,10 +217,9 @@ void loop() {
   mesh.update();
 
   static unsigned long lastSendTime = 0;
-  if (millis() - lastSendTime > 6000) {
+  if (millis() - lastSendTime > 20000) {
     lastSendTime = millis();
     sendMessage();
   }
   digitalWrite(2, local_msg.ios[2].input);
 }
-

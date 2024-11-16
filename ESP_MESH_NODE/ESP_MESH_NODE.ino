@@ -216,7 +216,7 @@ void loop() {
   mesh.update();
 
   static unsigned long lastSendTime = 0;
-  if (millis() - lastSendTime > 6000) {
+  if (millis() - lastSendTime > 10000) {
     lastSendTime = millis();
     sendMessage();
   }
